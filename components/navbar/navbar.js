@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // import ToggleTheme from "./toggleTheme";
+import LanguageSwitcher from "./language";
 
 import Link from "next/link";
 import Image from "next/image"
@@ -92,26 +93,30 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-          <div className="relative mr-3 space-x-4 nav__item">
-            <button onClick={() => {setModalOpen(!modalOpen); setButtonColor(!buttonColor)}} className={`flex items-center px-4 py-3 text-black hover:bg-borderGreen ${buttonColor ? 'bg-borderGreen' : 'bg-white'} rounded-md md:ml-5`}>
-              <span>Join the Community</span>
-              <svg className={`transition-transform duration-200 ml-1 w-4 h-4 ${modalOpen ? 'transform rotate-180' : 'transform rotate-270'}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            {modalOpen && (
-              <div className="absolute top-full mt-2 w-11/12 bg-white rounded-lg p-4 z-50 transform translate-x-1">
-                <div className="flex flex-row items-center justify-center h-full space-x-4 -mb-1">
-                  <Link href="https://x.com/etherlinkcom" target="_blank" rel="noopener noreferrer">
-                    <Twitter size={32} />
-                  </Link>
-                  <Link href="https://discord.gg/etherlink" target="_blank" rel="noopener noreferrer">
-                    <Discord size={40} />
-                  </Link>
+          <div className="flex space-x-4">
+            <div className="relative mr-3 nav__item">
+              <button onClick={() => {setModalOpen(!modalOpen); setButtonColor(!buttonColor)}} className={`flex items-center px-4 py-3 text-black hover:bg-borderGreen ${buttonColor ? 'bg-borderGreen' : 'bg-white'} rounded-md md:ml-5`}>
+                <span>Join the Community</span>
+                <svg className={`transition-transform duration-200 ml-1 w-4 h-4 ${modalOpen ? 'transform rotate-180' : 'transform rotate-270'}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {modalOpen && (
+                <div className="absolute top-full mt-2 w-11/12 bg-white rounded-lg p-4 z-50 transform translate-x-5">
+                  <div className="flex flex-row items-center justify-center h-full space-x-4 -mb-1">
+                    <Link href="https://x.com/etherlinkcom" target="_blank" rel="noopener noreferrer">
+                      <Twitter size={32} />
+                    </Link>
+                    <Link href="https://discord.gg/etherlink" target="_blank" rel="noopener noreferrer">
+                      <Discord size={40} />
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            )}
-            {/* <ToggleTheme /> */}
+              )}
+            </div>
+            <div className="relative mr-3 nav__item">
+              <LanguageSwitcher />
+            </div>
           </div>
         </div>
       </nav>
